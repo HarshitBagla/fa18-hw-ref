@@ -13,7 +13,20 @@ most_common_char
 Given an input string s, return the most common character in s.
 """
 def most_common_char(s):
-	pass
+	lower_s =s.lower()
+	d = {}
+	maxi = 0
+	for character in lower_s:
+		if character not in d.keys():
+			d[character] = 1
+		else:
+			d[character] += 1
+
+	for key, value in d.items():
+		if value > maxi:
+			maxi = value
+			maxiL = key
+	return maxiL
 
 
 """
@@ -37,7 +50,15 @@ Example 2:
 		None
 """
 def alphabet_finder(s):
-	pass
+	copy_s = s
+	lower_s = s.lower()
+	d = {}
+	for i in range(0, len(s)):
+		if lower_s[i] not in d.keys() and lower_s[i].isalpha():
+			d[lower_s[i]] = 1
+			if (len(d.keys()) == 26):
+				return copy_s[0:i+1]
+	return None
 
 
 """
@@ -117,7 +138,18 @@ Example:
 		1961
 """
 def alive_people(data):
-	pass
+	d = {}
+	for value in data:
+		till = value[0] + value[1]
+		for i in range(value[0], till):
+			if i in d:
+				d[i] += 1
+			else:
+				d[i] = 1
+
+	v = list(d.values())
+	k = list(d.keys())
+	return k[v.index(max(v))]
 
 
 """
@@ -194,6 +226,4 @@ Example 2:
 		[1, 2]
 """
 def zero_sum_subarray(arr):
-    pass 
-
-
+    pass
